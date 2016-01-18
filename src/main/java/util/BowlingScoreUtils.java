@@ -15,7 +15,7 @@ public class BowlingScoreUtils {
    * @return True if format matches, false otherwise.
    */
   public static boolean matchesBowlingScoreFormat(String tweet) {
-    String bowlingRegex = "(@\\w+)+ \\w+ (\\d{1,2} ){10,20}(\\d{1,2})";
+    String bowlingRegex = "(@\\w+)+ [^0-9\\-]+ (\\d{1,2} ){10,20}(\\d{1,2})";
     return Pattern.matches(bowlingRegex, tweet);
   }
 

@@ -3,6 +3,7 @@ package util;
 import java.util.Arrays;
 import java.util.List;
 import org.junit.Test;
+import personality.example.BowlingScorePersonality;
 
 import static org.junit.Assert.*;
 
@@ -54,5 +55,12 @@ public class BowlingScoreUtilsTest {
     List<Integer> scores = Arrays.asList(rolls);
     assertEquals(scores, BowlingScoreUtils.getScores(tweet));
   }
+
+  @Test
+  public void testNoName() {
+    String tweet = "@Test 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 10 10 10";
+    assertFalse(BowlingScoreUtils.matchesBowlingScoreFormat(tweet));
+  }
+
 
 }

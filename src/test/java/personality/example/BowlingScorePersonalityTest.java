@@ -73,4 +73,5 @@ public class BowlingScorePersonalityTest {
     BowlingScorePersonality.Game game = personalityUnderTest.parseBowlingGame(tweet);
     assertEquals(30, game.getScore());
   }
+
 }
