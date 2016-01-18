@@ -1,6 +1,7 @@
 package app;
 
 import personality.Personality;
+import personality.example.BowlingScorePersonality;
 import personality.example.EchoPersonality;
 import twitter.Config;
 import twitter.Tweetbot;
@@ -12,7 +13,12 @@ public class Main {
 
   public static void main(String[] args) {
     Config config = new Config();
-    Personality personality = new EchoPersonality(config);
+    Personality personality;
+    if (System.getProperty("personality").equals("bowling")) {
+      personality = new BowlingScorePersonality(config);
+    } else {
+      personality = new EchoPersonality(config);
+    }
     Tweetbot tweetbot = new Tweetbot(config, personality);
     tweetbot.run();
   }

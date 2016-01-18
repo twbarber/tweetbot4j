@@ -1,6 +1,5 @@
 package personality;
 
-import twitter.Response;
 import twitter4j.Status;
 
 /**

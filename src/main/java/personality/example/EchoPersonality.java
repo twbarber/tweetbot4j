@@ -2,7 +2,6 @@ package personality.example;
 
 import personality.Personality;
 import twitter.Config;
-import twitter.Response;
 import twitter4j.Status;
 import twitter4j.StatusUpdate;
 import twitter4j.Twitter;
