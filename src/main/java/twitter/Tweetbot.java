@@ -11,8 +11,8 @@ public class Tweetbot {
   public Tweetbot(Config config) {
     TwitterStream twitterStream = new TwitterStreamFactory().getInstance();
     twitterStream.addListener(listener);
-    FilterQuery tweetFilterQuery = new FilterQuery(); // See
-    tweetFilterQuery.track("@bot_twbarber"); // OR on keywords
+    FilterQuery tweetFilterQuery = new FilterQuery();
+    tweetFilterQuery.track("@bot_twbarber");
     twitterStream.filter(tweetFilterQuery);
   }
 
