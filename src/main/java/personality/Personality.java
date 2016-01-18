@@ -1,13 +1,13 @@
 package personality;
 
 import twitter.Response;
-import twitter.Tweet;
+import twitter4j.Status;
 
 /**
  * Interface for designing personalities for Tweetbots.
  */
 public interface Personality {
 
-  Response onMention(Tweet tweet);
+  void onMention(Status status);
 
 }
