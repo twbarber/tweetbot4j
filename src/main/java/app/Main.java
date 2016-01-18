@@ -14,7 +14,9 @@ public class Main {
   public static void main(String[] args) {
     Config config = new Config();
     Personality personality;
-    if (System.getProperty("bot.personality").equals("bowling")) {
+    if ((System.getProperty("bot.personality") != null
+        && System.getProperty("bot.personality").equals("bowling"))
+        || (args.length != 0 && args[0].equals("bowling"))) {
       personality = new BowlingScorePersonality(config);
     } else {
       personality = new EchoPersonality(config);
