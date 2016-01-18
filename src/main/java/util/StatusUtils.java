@@ -5,9 +5,14 @@ import java.util.regex.Pattern;
 /**
  * Utilities class for dealing with Strings.
  */
-public class StringUtils {
+public class StatusUtils {
 
   public static String removeMentions(String tweet) {
+    String mentionsRegex = "(@\\w+)+";
+    return tweet.replaceAll(mentionsRegex, "");
+  }
+
+  public static String getMentions(String tweet) {
     String mentionsRegex = "(@\\w+)+";
     return tweet.replaceAll(mentionsRegex, "");
   }

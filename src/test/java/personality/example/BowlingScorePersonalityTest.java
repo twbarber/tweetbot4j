@@ -8,7 +8,7 @@ import static org.junit.Assert.*;
 /**
  * Created by tyler on 1/17/16.
  */
-public class UnitConverterPersonalityTest {
+public class BowlingScorePersonalityTest {
 
   @Before
   public void setUp() throws Exception {

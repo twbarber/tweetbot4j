@@ -35,12 +35,12 @@ public class EchoPersonality implements Personality {
     String response = "@" + status.getUser().getScreenName() + content;
     StatusUpdate stat = new StatusUpdate(response);
     stat.setInReplyToStatusId(status.getId());
-    System.out.print("Sending the heartbeat, chief.");
+    System.out.print("Sending the echo.");
     try {
       twitter.updateStatus(stat);
-      System.out.print("Sent the heartbeat, chief.");
+      System.out.print("Sent the echo.");
     } catch (TwitterException e) {
-      System.err.print("Couldn't confirm. Am not alive.");
+      System.err.print("Unable to echo.");
       e.printStackTrace();
     }
   }
