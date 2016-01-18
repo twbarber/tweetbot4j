@@ -12,7 +12,7 @@ import twitter4j.conf.Configuration;
 import twitter4j.conf.ConfigurationBuilder;
 
 /**
- * Created by tyler on 1/17/16.
+ * Echos what the tweeting user said, and retweets it to the original tweeter.
  */
 public class EchoPersonality implements Personality {
 
