@@ -55,8 +55,15 @@ public class BowlingScorePersonality implements Personality {
   }
 
   private void respondWithFinalScore(Status status, Game bowlingGame) {
-    String response = "You scored: " + String.valueOf(bowlingGame.getScore());
+    String response = "You scored: " + String.valueOf(bowlingGame.getScore() + ".");
+    response += getCritique(bowlingGame.getScore());
     respondToTweet(status, response);
+  }
+
+  private String getCritique(int score) {
+    return score == 300 ? " A perfect game!" :
+        score >= 200 ? " Way to go!" :
+        score > 100 ? " Not to bad." : " There's always next time.";
   }
 
   private void respondBadFormatMessage(Status status) {
@@ -66,7 +73,7 @@ public class BowlingScorePersonality implements Personality {
 
   private void respondToTweet(Status tweet, String response) {
     Twitter twitter = new TwitterFactory(this.configuration).getInstance();
-    String status = "@" + tweet.getUser().getScreenName() + response;
+    String status = "@" + tweet.getUser().getScreenName() + " " +response;
     StatusUpdate statusToPost = new StatusUpdate(status);
     statusToPost.setInReplyToStatusId(tweet.getId());
     System.out.print("Attempting to send the reply.");
