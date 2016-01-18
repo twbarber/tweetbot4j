@@ -13,7 +13,10 @@ Users can easily deploy a twitter bot by simply developing its 'Personality'
 
 ##Bowling Score Personality
 
-A working example of the Bowling Scores bot can be access on twitter @TWBarberBot. Just tweet at 
+This bot lives on a private Amazon Web Services EC2 Instance.
+
+A working example of the Bowling Scores bot can be access on twitter **@TWBarberBot**. Just tweet
+ at 
 the bot with your name, followed by the amount of pins you knocked down for each roll.
 
 **Contact Format**
