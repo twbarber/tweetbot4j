@@ -1,5 +1,6 @@
 package app;
 
+import twitter.Config;
 import twitter.Tweetbot;
 
 /**
@@ -8,7 +9,9 @@ import twitter.Tweetbot;
 public class Main {
 
   public static void main(String[] args) {
-    Tweetbot tweetbot = new Tweetbot();
+    Config config = new Config();
+    Tweetbot tweetbot = new Tweetbot(config);
+    tweetbot.run();
   }
 
 }

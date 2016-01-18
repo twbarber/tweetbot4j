@@ -1,28 +1,40 @@
 package twitter;
 
 
+import java.util.ArrayList;
+import java.util.List;
 import twitter4j.*;
+import twitter4j.conf.Configuration;
+import twitter4j.conf.ConfigurationBuilder;
+import twitter4j.util.function.Consumer;
 
 /**
  * Main interface between Personalities and Twitter API.
  */
 public class Tweetbot {
 
+  private Configuration config;
+  private String userHandle;
+  private List<Status> mentions = new ArrayList<>();
+
   public Tweetbot(Config config) {
-    TwitterStream twitterStream = new TwitterStreamFactory().getInstance();
-    twitterStream.addListener(listener);
-    FilterQuery tweetFilterQuery = new FilterQuery();
-    tweetFilterQuery.track("@bot_twbarber");
-    twitterStream.filter(tweetFilterQuery);
+    this.config = new ConfigurationBuilder()
+        .setOAuthConsumerKey(config.getConsumerKey())
+        .setOAuthConsumerSecret(config.getConsumerSecret())
+        .setOAuthAccessToken(config.getAccessToken())
+        .setOAuthAccessTokenSecret(config.getAccessTokenSecret())
+        .build();
+    this.userHandle = config.getHandle();
   }
 
   public final UserStreamListener listener = new UserStreamListener() {
+
       public void onException(Exception e) {
 
       }
 
       public void onStatus(Status status) {
-        System.out.println(status.toString());
+        System.out.print("tweet gotten");
       }
 
       public void onDeletionNotice(StatusDeletionNotice statusDeletionNotice) {
@@ -131,4 +143,24 @@ public class Tweetbot {
 
     };
 
+  public void run() {
+    TwitterStream twitterStream = new TwitterStreamFactory(this.config).getInstance();
+    twitterStream.addListener(listener);
+    FilterQuery tweetFilterQuery = new FilterQuery();
+    tweetFilterQuery.track("@" + this.userHandle);
+    twitterStream.filter(tweetFilterQuery);
+    Twitter twitter = new TwitterFactory(this.config).getInstance();
+    twitterStream.onStatus(status -> {
+      String response = "@" + status.getUser().getScreenName() + " I sure am.";
+      StatusUpdate stat = new StatusUpdate(response);
+      stat.setInReplyToStatusId(status.getId());
+      System.out.print("Sending the heartbeat, chief.");
+      try {
+        twitter.updateStatus(stat);
+        System.out.print("Sent the heartbeat, chief.");
+      } catch (TwitterException e) {
+        System.err.print("Couldn't confirm. Am not alive.");
+      }
+    });
+  }
 }
