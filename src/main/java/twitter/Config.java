@@ -13,7 +13,7 @@ public class Config {
   private String consumerSecret;
   private String accessToken;
   private String accessTokenSecret;
-  private String handle;
+  private String user;
 
   public Config() {
     Properties properties = loadProperties();
@@ -21,7 +21,7 @@ public class Config {
     this.consumerSecret = properties.getProperty("oauth.consumerSecret");
     this.accessToken = properties.getProperty("oauth.accessToken");
     this.accessTokenSecret = properties.getProperty("oauth.accessTokenSecret");
-    this.handle = properties.getProperty("bot.handle");
+    this.user = properties.getProperty("bot.user");
   }
 
   private Properties loadProperties() {
@@ -31,7 +31,7 @@ public class Config {
       properties.load(in);
       in.close();
     } catch (IOException e) {
-      System.err.print("Nope.");
+      System.err.print("Unable to load Configuration file.");
     }
       return properties;
   }
@@ -53,6 +53,6 @@ public class Config {
   }
 
   public String getHandle() {
-    return handle;
+    return user;
   }
 }
