@@ -1,8 +1,9 @@
-package util;
+package personality.example;
 
 import java.util.Arrays;
 import java.util.List;
 import org.junit.Test;
+import personality.example.bowling.BowlingScoreUtils;
 
 import static org.junit.Assert.*;
 

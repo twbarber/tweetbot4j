@@ -1,4 +1,4 @@
-package personality.example;
+package personality.example.echo;
 
 import personality.Personality;
 import twitter.Config;

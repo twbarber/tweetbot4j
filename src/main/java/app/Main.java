@@ -1,8 +1,8 @@
 package app;
 
 import personality.Personality;
-import personality.example.BowlingScorePersonality;
-import personality.example.EchoPersonality;
+import personality.example.bowling.BowlingScorePersonality;
+import personality.example.echo.EchoPersonality;
 import twitter.Config;
 import twitter.Tweetbot;
 

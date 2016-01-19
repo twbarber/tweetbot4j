@@ -1,4 +1,6 @@
-package util;
+package personality.example.bowling;
+
+import util.StatusUtils;
 
 import java.util.ArrayList;
 import java.util.List;
