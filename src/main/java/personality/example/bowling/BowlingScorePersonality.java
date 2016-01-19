@@ -1,6 +1,5 @@
 package personality.example.bowling;
 
-import java.util.LinkedList;
 import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -55,6 +54,7 @@ public class BowlingScorePersonality implements Personality {
 
   private void respondWithFinalScore(Status status, Game bowlingGame) {
     String response = "You scored: " + String.valueOf(bowlingGame.getScore() + ".");
+    this.logger.info("Responding to: " + status.getUser());
     response += getCritique(bowlingGame.getScore());
     respondToTweet(status, response);
   }
@@ -75,10 +75,10 @@ public class BowlingScorePersonality implements Personality {
     String status = "@" + tweet.getUser().getScreenName() + " " +response;
     StatusUpdate statusToPost = new StatusUpdate(status);
     statusToPost.setInReplyToStatusId(tweet.getId());
-    System.out.print("Attempting to send the reply.");
+    this.logger.info("Attempting to send the reply.");
     try {
       twitter.updateStatus(statusToPost);
-      System.out.print("Sent the reply.");
+      this.logger.info("Sent the reply.");
     } catch (TwitterException e) {
       System.err.print("Unable to reply.");
       e.printStackTrace();

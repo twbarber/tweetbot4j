@@ -1,7 +1,9 @@
 package twitter;
 
+import org.slf4j.LoggerFactory;
 import personality.Personality;
 import twitter4j.*;
+import org.slf4j.Logger;
 import twitter4j.conf.Configuration;
 import twitter4j.conf.ConfigurationBuilder;
 
@@ -10,6 +12,7 @@ import twitter4j.conf.ConfigurationBuilder;
  */
 public class Tweetbot {
 
+  private final Logger logger = LoggerFactory.getLogger(Tweetbot.class);
   private Configuration config;
   private Personality personality;
 
@@ -47,7 +50,7 @@ public class Tweetbot {
     }
 
     public void onStatus(Status status) {
-      System.out.print("tweet gotten");
+      logger.info("Mentioned in status: " + status.getId());
     }
 
     public void onDeletionNotice(StatusDeletionNotice statusDeletionNotice) {
